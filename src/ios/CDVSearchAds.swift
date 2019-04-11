@@ -10,7 +10,7 @@ import iAd
             callbackId: callbackId
         )
     }
-    
+    @objc(initialize:)
     func initialize(_ command:CDVInvokedUrlCommand) {
         DispatchQueue.global().async {
             ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
