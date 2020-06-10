@@ -15,7 +15,7 @@ import iAd
         DispatchQueue.global().async {
             ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
                 if error == nil {
-                    for (type, adDictionary) in attributionDetails! {
+                    for (_, adDictionary) in attributionDetails! {
                         let attribution = adDictionary as? Dictionary<AnyHashable, Any>;
                         
                         let pluginResult = CDVPluginResult(
@@ -28,7 +28,7 @@ import iAd
                 } else {
                     let pluginResult = CDVPluginResult(
                         status : CDVCommandStatus_ERROR,
-                        messageAs : "Can't get Search Ads Attribution Information"
+                        messageAs : error?.localizedDescription
                     );
 
                     self.sendResult(pluginResult!, callbackId: command.callbackId!);
