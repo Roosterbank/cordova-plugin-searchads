@@ -1,4 +1,4 @@
-package co.teltech.ionic.plugin.SearchAds;
+package com.roostermoney.searchads;
 
 import org.apache.cordova.CordovaPlugin;
 
