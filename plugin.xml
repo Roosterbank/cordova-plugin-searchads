@@ -24,16 +24,16 @@
 			</feature>
 		</config-file>
       	<source-file src="src/ios/CDVSearchAds.swift" />
-		<framework src="iAd.framework" />
+		<framework src="AdServices.framework" />
 	</platform>
 
   	<platform name="android">
     	<config-file target="config.xml" parent="/*">
       		<feature name="SearchAds">
-        		<param name="android-package" value="co.teltech.ionic.plugin.SearchAds" />
+        		<param name="android-package" value="com.roostermoney.searchads.SearchAds" />
       		</feature>
     	</config-file>
 
-    	<source-file src="src/android/SearchAds.java" target-dir="src/co/teltech/ionic/plugin" />
+    	<source-file src="src/android/SearchAds.java" target-dir="src/com/roostermoney/searchads" />
   	</platform>
 </plugin>

@@ -1,4 +1,3 @@
-import iAd
 import AdServices
 
 @available(iOS 10.0, *)
@@ -40,11 +39,9 @@ import AdServices
                     return
                 }
                 if let httpResponse = response as? HTTPURLResponse {
-                    print(httpResponse.statusCode)
                     if httpResponse.statusCode == 200 {
                         do {
                             let jsonResponse = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-                            print(jsonResponse)
                             if jsonResponse["campaignId"] is Int {
                                 let pluginResult = CDVPluginResult(
                                     status: CDVCommandStatus_OK,
@@ -65,26 +62,7 @@ import AdServices
             self.sendError(message: "No attribution token", command: command)
         }
       } else {
-          DispatchQueue.global().async {
-              ADClient.shared().requestAttributionDetails({ (attributionDetails, error) in
-                  if error == nil {
-                      for (_, adDictionary) in attributionDetails! {
-                          let attribution = adDictionary as? Dictionary<AnyHashable, Any>;
-                          let pluginResult = CDVPluginResult(
-                            status: CDVCommandStatus_OK,
-                            messageAs : attribution
-                          )
-                          self.sendResult(pluginResult!, callbackId: command.callbackId!);
-                      }
-                  } else {
-                      let pluginResult = CDVPluginResult(
-                        status : CDVCommandStatus_ERROR,
-                        messageAs : error?.localizedDescription
-                      );
-                    self.sendResult(pluginResult!, callbackId: command.callbackId!);
-                }
-            })
-          }
+          self.sendError(message: "Unsupported", command: command);
       }
   }
 }
