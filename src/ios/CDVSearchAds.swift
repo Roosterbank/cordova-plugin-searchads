@@ -27,7 +27,7 @@ import AdServices
     }
 
   func fetchAttributionData(command:CDVInvokedUrlCommand) {
-      if #available(iOS 14.3, *) {
+      if #available(iOS 15, *) {
         if let adAttributionToken = try? AAAttribution.attributionToken() {
             let request = NSMutableURLRequest(url: URL(string:"https://api-adservices.apple.com/api/v1/")!)
             request.httpMethod = "POST"
