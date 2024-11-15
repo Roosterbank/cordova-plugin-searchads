@@ -28,6 +28,8 @@ import AdServices
 
   func fetchAttributionData(command:CDVInvokedUrlCommand) {
       if #available(iOS 15, *) {
+        // SILO-20255: there were issues with attributionToken on iOS 14.5
+        // hence restricting this to iOS 15
         if let adAttributionToken = try? AAAttribution.attributionToken() {
             let request = NSMutableURLRequest(url: URL(string:"https://api-adservices.apple.com/api/v1/")!)
             request.httpMethod = "POST"
