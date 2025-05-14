@@ -21,11 +21,8 @@ import AdServices
       self.sendResult(pluginResult!, callbackId: command.callbackId!);
     }
 
-    @objc(initialize:)
-    func initialize(_ command:CDVInvokedUrlCommand) {
-      fetchAttributionData(command: command)
-    }
 
+  @objc(fetchAttributionData:)
   func fetchAttributionData(command:CDVInvokedUrlCommand) {
       if #available(iOS 15, *) {
         // SILO-20255: there were issues with attributionToken on iOS 14.5
