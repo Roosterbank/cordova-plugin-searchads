@@ -13,10 +13,7 @@ From [Apple's documentation](https://searchads.apple.com/help/pdf/attribution-ap
 if (typeof window.SearchAds === 'undefined') {
   return;
 }
-window.SearchAds.initialize(function(attribution) {
-    console.dir(attribution); // do something with this attribution (send to your server for further processing)
-    $scope.data = JSON.stringify(attribution);
-}, function (err) {
-    console.dir(err);
+const data = await window.SearchAds.fetchAttributionData();
+// use data or catch error
 });
 ```
